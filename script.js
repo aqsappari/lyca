@@ -39,6 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const startDrag = (e) => {
         e.preventDefault();
+
+        // Stop falling animation if caught mid-air
+        if (petal.dataset.fallId) {
+          cancelAnimationFrame(Number(petal.dataset.fallId));
+          petal.dataset.fallId = "";
+        }
+
         petal.style.cursor = "grabbing";
 
         // Determine start coordinates based on event type (mouse or touch)
@@ -163,8 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
       matrix.m42 = posY;
       petal.style.transform = matrix.toString();
 
-      if (posY < window.innerHeight + 100) {
-        requestAnimationFrame(animate);
+      // Check if off screen (bottom or sides)
+      const boundX = window.innerWidth / 2 + 200;
+      const boundY = window.innerHeight + 200;
+
+      if (posY < boundY && Math.abs(posX) < boundX) {
+        petal.dataset.fallId = requestAnimationFrame(animate);
       } else {
         petal.remove();
 
@@ -177,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
-    requestAnimationFrame(animate);
+    petal.dataset.fallId = requestAnimationFrame(animate);
   }
 
   setupPetals();
