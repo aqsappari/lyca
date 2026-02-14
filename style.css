@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --petal-a: #ffca28;
+  --petal-b: #ffa000;
+  --petal-c: #f57c00;
+  --center: #bf360c;
+  --stem: #388e3c;
+  --branch: #5d4037;
+  --leaf: #4caf50;
+
+  --bg-light: #eceff1;
+  --bg-dark: #2f4f4f;
+
+  --text-rosy-light: #ffca28;
+  --text-rosy-dark: #f53900;
+
+  --subtext-light: #ffca28;
+  --subtext-dark: #ffa000;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-rosy-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  width: min(350px, 100%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rose Container */
+.rose-container {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.25));
+}
+
+/* Stem */
+.stem {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%) translateY(40%);
+  width: 4px;
+  height: 500px;
+  background: linear-gradient(to top, var(--stem), var(--stem));
+  border-radius: 2px;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
+  animation: grow-stem 1.5s ease-out backwards;
+}
+
+/* Leaves */
+.leaf {
+  position: absolute;
+  border-radius: 50% 0;
+}
+
+.leaf-left {
+  bottom: 40px;
+  left: 50%;
+  margin-left: -60px;
+  width: 60px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--leaf) 0%, var(--stem) 100%);
+  transform: rotate(-110deg) translateX(80px) translateY(7px);
+  transform-origin: bottom right;
+  box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: leaf-left-grow 0.5s ease-out 1.5s backwards;
+}
+
+.leaf-right {
+  bottom: 140px;
+  left: 50%;
+  width: 70px;
+  height: 110px;
+  background: linear-gradient(45deg, var(--leaf) 0%, var(--stem) 100%);
+  transform: rotate(45deg) translateX(10px) translateY(10px);
+  transform-origin: bottom left;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: leaf-right-grow 0.5s ease-out 1.5s backwards;
+}
+
+/* Rose Petals */
+.rose {
+  position: absolute;
+  bottom: 230px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.petal {
+  position: absolute;
+  border-radius: 50%;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+  animation: grow-petal 1s ease-out backwards;
+}
+
+/* Outer layer petals */
+.petal-1 {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    var(--petal-a),
+    var(--petal-c)
+  );
+  transform: translate(0, -70px) rotateZ(0deg);
+  opacity: 0.95;
+  animation-delay: 3s;
+}
+
+.petal-2 {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    var(--petal-b),
+    var(--petal-c)
+  );
+  transform: translate(70px, -35px) rotateZ(72deg);
+  opacity: 0.93;
+  animation-delay: 3s;
+}
+
+.petal-3 {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    var(--petal-a),
+    var(--petal-b)
+  );
+  transform: translate(43px, 57px) rotateZ(144deg);
+  opacity: 0.93;
+  animation-delay: 3s;
+}
+
+.petal-4 {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    var(--petal-b),
+    var(--petal-c)
+  );
+  transform: translate(-43px, 57px) rotateZ(216deg);
+  opacity: 0.93;
+  animation-delay: 3s;
+}
+
+.petal-5 {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    var(--petal-c),
+    var(--petal-a)
+  );
+  transform: translate(-70px, -35px) rotateZ(288deg);
+  opacity: 0.93;
+  animation-delay: 3s;
+}
+
+/* Middle layer petals */
+.petal-6 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at 35% 35%,
+    var(--petal-b),
+    var(--petal-c)
+  );
+  transform: translate(0, -50px) rotateZ(36deg);
+  opacity: 0.9;
+  animation-delay: 2.4s;
+}
+
+.petal-7 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at 35% 35%,
+    var(--petal-a),
+    var(--petal-b)
+  );
+  transform: translate(47px, -16px) rotateZ(108deg);
+  opacity: 0.9;
+  animation-delay: 2.4s;
+}
+
+.petal-8 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at 35% 35%,
+    var(--petal-b),
+    var(--petal-a)
+  );
+  transform: translate(29px, 40px) rotateZ(180deg);
+  opacity: 0.9;
+  animation-delay: 2.4s;
+}
+
+.petal-9 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at 35% 35%,
+    var(--petal-c),
+    var(--petal-b)
+  );
+  transform: translate(-47px, -16px) rotateZ(252deg);
+  opacity: 0.9;
+  animation-delay: 2.4s;
+}
+
+/* Inner layer petals */
+.petal-10 {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    var(--petal-b),
+    var(--petal-c)
+  );
+  transform: translate(0, -35px) rotateZ(45deg);
+  opacity: 0.88;
+  animation-delay: 2s;
+}
+
+.petal-11 {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    var(--petal-a),
+    var(--petal-b)
+  );
+  transform: translate(35px, 0px) rotateZ(165deg);
+  opacity: 0.88;
+  animation-delay: 2s;
+}
+
+.petal-12 {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    var(--petal-c),
+    var(--petal-a)
+  );
+  transform: translate(-35px, 0px) rotateZ(285deg);
+  opacity: 0.88;
+  animation-delay: 2s;
+}
+
+/* Rose Center */
+.center {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: radial-gradient(circle at 35% 35%, #ff6b35, var(--center));
+  border-radius: 50%;
+  box-shadow:
+    inset -2px -2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation: pop-center 0.5s ease-out 1.5s backwards;
+}
+
+@keyframes grow-stem {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes leaf-left-grow {
+  from {
+    transform: rotate(-110deg) translateX(80px) translateY(7px) scale(0);
+  }
+}
+
+@keyframes leaf-right-grow {
+  from {
+    transform: rotate(45deg) translateX(10px) translateY(10px) scale(0);
+  }
+}
+
+@keyframes pop-center {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes grow-petal {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.message {
+  position: absolute;
+  top: -10%;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.message > * {
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  color: var(--text-rosy-dark);
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.message span {
+  opacity: 0;
+  animation: fade-in 0.1s ease-out forwards;
+}
+
+.day-counter {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.5rem;
+  color: var(--text-rosy-dark);
+  z-index: 100;
+}
